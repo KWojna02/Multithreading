@@ -44,29 +44,41 @@ namespace Multithreading
             }
         }
 
-        public Matrix Multiply(Matrix other)
+        public Matrix Multiplication(Matrix other, int numberOfThreads)
         {
             int n = rows;
             Matrix result = new Matrix(n);
 
-            for (int i = 0; i < n; i++)
+            Thread[] threads = new Thread[numberOfThreads];
+
+            int rowsPerThread = n / numberOfThreads;
+
+            for (int t = 0; t < numberOfThreads; t++)
             {
-                for (int j = 0; j < n; j++)
+                int startRow = t * rowsPerThread;
+                int endRow = (t == numberOfThreads - 1) ? n : (startRow + rowsPerThread);
+
+                threads[t] = new Thread(() =>
                 {
-                    int sum = 0;
-                    for (int k = 0; k < n; k++)
+                    for (int i = startRow; i < endRow; i++)
                     {
-                        sum += matrix[i, k] * other.matrix[k, j];
+                        for (int j = 0; j < n; j++)
+                        {
+                            int sum = 0;
+                            for (int k = 0; k < n; k++)
+                            {
+                                sum += matrix[i, k] * other.matrix[k, j];
+                            }
+                            result.matrix[i, j] = sum;
+                        }
                     }
-                    result.matrix[i, j] = sum;
-                }
+                });
+                threads[t].Start();
             }
+            foreach(Thread thread in threads) thread.Join(); 
 
             return result;
         }
-
-
-
-
+        
     }
 }
