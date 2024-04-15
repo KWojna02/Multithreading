@@ -51,7 +51,7 @@ namespace Multithreading_Parallel
             int maxThreads = numberOfThreads;
             ParallelOptions options = new() { MaxDegreeOfParallelism = maxThreads };
 
-            Parallel.For(0, rows, options, i =>
+            Parallel.For(0, n, options, i =>
             {
                 for (int j = 0; j < n; j++)
                 {    
@@ -60,7 +60,8 @@ namespace Multithreading_Parallel
                     {
                        sum += matrix[i, k] * other.matrix[k, j];
                     }                  
-                    result.matrix[i, j] = sum;
+                   
+                     result.matrix[i, j] = sum;
                     
                 }
             });        
