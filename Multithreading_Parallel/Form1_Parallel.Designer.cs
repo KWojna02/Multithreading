@@ -115,6 +115,7 @@ namespace Multithreading_Parallel
             textBoxThreads.Name = "textBoxThreads";
             textBoxThreads.Size = new Size(125, 27);
             textBoxThreads.TabIndex = 7;
+            textBoxThreads.TextChanged += textBoxThreads_TextChanged;
             // 
             // labelThreads
             // 
@@ -140,7 +141,7 @@ namespace Multithreading_Parallel
             Controls.Add(buttonGenerate);
             Controls.Add(matrixView1);
             Name = "Form1_Parallel";
-            Text = "Random matrices multiplication";
+            Text = "Random matrices multiplication (Parallel)";
             ((System.ComponentModel.ISupportInitialize)matrixView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)matrixView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)matrixView3).EndInit();

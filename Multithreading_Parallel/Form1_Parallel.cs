@@ -12,6 +12,12 @@ namespace Multithreading_Parallel
         {
             buttonGenerate.Enabled = false;
             if (textBoxRows.Text == "" || textBoxThreads.Text == "") { buttonGenerate.Enabled = true; return; }
+            else if (textBoxRows.BackColor == Color.Red || textBoxThreads.BackColor == Color.Red)
+            {
+                MessageBox.Show("Invalid input");
+                buttonGenerate.Enabled = true;
+                return;
+            }
 
             int rows = int.Parse(textBoxRows.Text);
             int threads = int.Parse(textBoxThreads.Text);
@@ -38,7 +44,16 @@ namespace Multithreading_Parallel
 
         private void textBoxRows_TextChanged(object sender, EventArgs e)
         {
+            string n = textBoxRows.Text;
+            if (!int.TryParse(n, out int result) || result < 1) textBoxRows.BackColor = Color.Red;
+            else textBoxRows.BackColor = Color.Green;
+        }
 
+        private void textBoxThreads_TextChanged(object sender, EventArgs e)
+        {
+            string n = textBoxThreads.Text;
+            if (!int.TryParse(n, out int result) || result < 1) textBoxThreads.BackColor = Color.Red;
+            else textBoxThreads.BackColor = Color.Green;
         }
     }
 }

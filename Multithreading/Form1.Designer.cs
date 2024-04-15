@@ -76,6 +76,7 @@
             textBoxRows.Name = "textBoxRows";
             textBoxRows.Size = new Size(125, 27);
             textBoxRows.TabIndex = 3;
+            textBoxRows.TextChanged += textBoxRows_TextChanged;
             // 
             // labelRows
             // 
@@ -110,6 +111,7 @@
             textBoxThreads.Name = "textBoxThreads";
             textBoxThreads.Size = new Size(125, 27);
             textBoxThreads.TabIndex = 7;
+            textBoxThreads.TextChanged += textBoxThreads_TextChanged;
             // 
             // labelThreads
             // 
@@ -135,7 +137,7 @@
             Controls.Add(buttonGenerate);
             Controls.Add(matrixView1);
             Name = "Form1";
-            Text = "Random matrices multiplication";
+            Text = "Random matrices multiplication (Thread)";
             ((System.ComponentModel.ISupportInitialize)matrixView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)matrixView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)matrixView3).EndInit();
