@@ -11,6 +11,8 @@ namespace Multithreading
     {
         public int rows {  get; set; }
         public int[,] matrix { get; set; }
+
+        public static readonly object lockObject = new();
         public Matrix(int rows)
         {
             this.rows = rows;
@@ -32,7 +34,7 @@ namespace Multithreading
             dataGridView.ColumnCount = rows;
             for (int i = 0; i < rows; i++)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewRow row = new();
                 row.CreateCells(dataGridView);
 
                 for (int j = 0; j < rows; j++)
@@ -43,11 +45,10 @@ namespace Multithreading
                 dataGridView.Rows.Add(row);
             }
         }
-
         public Matrix Multiplication(Matrix other, int numberOfThreads)
         {
             int n = rows;
-            Matrix result = new Matrix(n);
+            Matrix result = new(n);            
 
             Thread[] threads = new Thread[numberOfThreads];
 
@@ -58,7 +59,7 @@ namespace Multithreading
                 int startRow = t * rowsPerThread;
                 int endRow = (t == numberOfThreads - 1) ? n : (startRow + rowsPerThread);
 
-                threads[t] = new Thread(() =>
+                threads[t] = new (() =>
                 {
                     for (int i = startRow; i < endRow; i++)
                     {
@@ -69,16 +70,20 @@ namespace Multithreading
                             {
                                 sum += matrix[i, k] * other.matrix[k, j];
                             }
-                            result.matrix[i, j] = sum;
+
+                            lock (lockObject)
+                            {
+                                result.matrix[i, j] = sum;
+                            }
                         }
                     }
                 });
                 threads[t].Start();
             }
-            foreach(Thread thread in threads) thread.Join(); 
+            foreach (Thread thread in threads) thread.Join();
 
             return result;
         }
-        
+
     }
 }

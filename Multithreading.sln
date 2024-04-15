@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multithreading", "Multithreading\Multithreading.csproj", "{6DA4FBF1-3817-487A-9966-928E29D8BAD7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multithreading_Parallel", "Multithreading_Parallel\Multithreading_Parallel.csproj", "{F31D3E81-DED6-43A8-BDF2-3CC53AA301B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelPhotoProcessing", "ParallelPhotoProcessing\ParallelPhotoProcessing.csproj", "{A2705881-2C8E-4842-B351-EF2436DBB3D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6DA4FBF1-3817-487A-9966-928E29D8BAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA4FBF1-3817-487A-9966-928E29D8BAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA4FBF1-3817-487A-9966-928E29D8BAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31D3E81-DED6-43A8-BDF2-3CC53AA301B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31D3E81-DED6-43A8-BDF2-3CC53AA301B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31D3E81-DED6-43A8-BDF2-3CC53AA301B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31D3E81-DED6-43A8-BDF2-3CC53AA301B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2705881-2C8E-4842-B351-EF2436DBB3D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2705881-2C8E-4842-B351-EF2436DBB3D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2705881-2C8E-4842-B351-EF2436DBB3D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2705881-2C8E-4842-B351-EF2436DBB3D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
