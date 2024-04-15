@@ -13,12 +13,10 @@ namespace ParallelPhotoProcessing
 
         private void ButtonLoad_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "Image files|*.jpg;*.jpeg;*.png;*.bmp"; //image files
             openFileDialog1.FileName = "";
 
             DialogResult result = openFileDialog1.ShowDialog();
-
 
             if (result == DialogResult.OK)
             {
@@ -37,8 +35,6 @@ namespace ParallelPhotoProcessing
 
                         pictureBoxInputImage.Image = img;
                         pictureBoxInputImage.SizeMode = PictureBoxSizeMode.Zoom;
-
-
                     }
                     catch
                     {
@@ -46,7 +42,6 @@ namespace ParallelPhotoProcessing
                     }
                 }
             }
-
         }       
 
         private void ButtonProcess_Click(object sender, EventArgs e)
@@ -82,10 +77,7 @@ namespace ParallelPhotoProcessing
             pictureBoxNegative.Image = processedImages[3];
             pictureBoxNegative.SizeMode = PictureBoxSizeMode.Zoom;
 
-            buttonProcess.Enabled = true;
-             
-        }
-
-        
+            buttonProcess.Enabled = true;             
+        }        
     }
 }
