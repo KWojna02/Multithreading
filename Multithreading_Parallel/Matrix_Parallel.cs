@@ -20,7 +20,7 @@ namespace Multithreading_Parallel
             {
                 for (int j = 0; j < rows; j++)
                 {
-                    Random random = new();
+                    Random random = new(1);
                     matrix[i, j] = random.Next(1, 10);
                 }
             }
@@ -51,7 +51,7 @@ namespace Multithreading_Parallel
             int maxThreads = numberOfThreads;
             ParallelOptions options = new() { MaxDegreeOfParallelism = maxThreads };
 
-            Parallel.For(0, maxThreads, options, i =>
+            Parallel.For(0, rows, options, i =>
             {
                 for (int j = 0; j < n; j++)
                 {    
@@ -59,14 +59,11 @@ namespace Multithreading_Parallel
                     for (int k = 0; k < n; k++)
                     {
                        sum += matrix[i, k] * other.matrix[k, j];
-                    }
-                
-                    Interlocked.Add(ref result.matrix[i, j], sum);
+                    }                  
+                    result.matrix[i, j] = sum;
+                    
                 }
-            });
-            
-
-
+            });        
             return result;
         }       
 
